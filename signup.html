@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <title>sign up</title>
+    <link rel="stylesheet" type = "text/css" href ="style.css" />
+    <script src="validate.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="jquery.js"></script>
+</head>
+
+<body> 
+
+	<h2>Signup Form</h2> 
+    <div class="card">
+	 <form action="" method="POST" id="test-form" onsubmit="validate();" > 
+		    <label><b>Name :</b></label> 
+            <input type="text" placeholder="firstname" name="F_name" required>
+            <input type="text" placeholder="lastname" name="L_name" required>
+            <br>
+            <label><b>Email :</b></label> 
+            <input type="email" placeholder="xyz@gmail.com" name="email" required> 
+            <br>
+            <label><b>Phone Number :</b></label>
+            <input type="tel" placeholder="10 digit number" pattern="[0-9]{10}" name="Phone" required>
+            <br>
+            <label><b>Password :</b></label> 
+            <input type="password" placeholder="enter password" id="pass"  required> 
+            <br>
+            <label><b>Repeat Password :</b></label> 
+            <input type="password" placeholder="Repeat Password" id="rp" required> 
+            <br>
+           <input type="submit" id="btn" value="submit"  >
+			 
+		
+     </form> 
+     
+
+  </div> 
+  <script>
+    var testForm = document.getElementById('test-form');
+    testForm.onsubmit = function(event) {
+      event.preventDefault();
+  
+      var request = new XMLHttpRequest();
+      // POST to httpbin which returns the POST data as JSON
+      request.open('POST', 'https://httpbin.org/post', /* async = */ false);
+  
+      var formData = new FormData(document.getElementById('test-form'));
+      request.send(formData);
+  
+      console.log(request.response);
+    }
+  </script>
+  
+</body> 
+
+</html> 
